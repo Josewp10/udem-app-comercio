@@ -1,12 +1,13 @@
 import {ReglaPrecio} from '../interfaces/reglaPrecio';
 
-class ReglaPeso implements ReglaPrecio {
-    es_aplicable(sku: string): boolean {
-       
-        return true; 
+export class ReglaPeso implements ReglaPrecio {
+    es_aplicable(): boolean {
+        return true; // Siempre es aplicable para productos de peso
     }
 
     calcular_total(cantidad: number, precio: number): number {
-        return cantidad * precio;
+        // Se asume que el precio es en gramos y se convierte a kilogramos
+        const pesoEnKg = precio / 1000;
+        return cantidad * pesoEnKg;
     }
 }

@@ -1,9 +1,8 @@
 import {ReglaPrecio} from '../interfaces/reglaPrecio';
 
-class ReglaNormal implements ReglaPrecio {
-    es_aplicable(sku: string): boolean {
-       
-        return true; 
+export class ReglaNormal implements ReglaPrecio {
+    es_aplicable(): boolean {
+        return true; // Siempre es aplicable para productos normales
     }
 
     calcular_total(cantidad: number, precio: number): number {

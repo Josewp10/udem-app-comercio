@@ -1,12 +1,18 @@
 import {ReglaPrecio} from '../interfaces/reglaPrecio';
 
-class ReglaEspecial implements ReglaPrecio {
-    es_aplicable(sku: string): boolean {
-       
-        return true; 
+export class ReglaEspecial implements ReglaPrecio {
+    es_aplicable(): boolean {
+        return true; // Siempre es aplicable para productos de descuento especial
     }
 
     calcular_total(cantidad: number, precio: number): number {
-        return cantidad * precio;
+        const descuentoMaximo = 0.5; // 50%
+        const unidadesConDescuento = Math.floor(cantidad / 3);
+        const unidadesSinDescuento = cantidad % 3;
+        const totalConDescuento = unidadesConDescuento * (precio * 0.8); // 20% de descuento
+        const totalSinDescuento = unidadesSinDescuento * precio;
+        return totalConDescuento + totalSinDescuento > precio * descuentoMaximo
+            ? precio * descuentoMaximo
+            : totalConDescuento + totalSinDescuento;
     }
 }

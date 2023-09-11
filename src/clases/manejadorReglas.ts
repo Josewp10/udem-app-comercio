@@ -1,19 +1,26 @@
 import { ReglaPrecio } from "../interfaces/reglaPrecio";
+import { ReglaNormal } from "./reglaNormal";
+import { ReglaEspecial } from "./reglaEspecial";
+import { ReglaPeso } from "./reglaPeso";
+
 
 export class ManejadorReglas {
-    // Atributo type
-    private field: string;
-    //private regla: ReglaPrecio; // Atributo de tipo ReglaPrecio
+    private field: string; // Atributo field
 
     constructor(field: string) {
         this.field = field;
-        //this.regla = regla;
     }
 
-    // Método crear_regla
-    crear_regla(sku: string) {
-        // Puedes utilizar los métodos de la regla aquí
-        //const esAplicable = this.regla.es_aplicable(sku);
-        //// ...
+    crear_regla(sku: string): ReglaPrecio {
+        // Utilizando la lógica proporcionada en el enunciado para determinar el tipo de producto
+        if (sku.startsWith("EA")) {
+            return new ReglaNormal();
+        } else if (sku.startsWith("WE")) {
+            return new ReglaPeso();
+        } else if (sku.startsWith("SP")) {
+            return new ReglaEspecial();
+        } else {
+            throw new Error("Tipo de producto no reconocido.");
+        }
     }
 }
