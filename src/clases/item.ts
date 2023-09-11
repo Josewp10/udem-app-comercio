@@ -5,13 +5,16 @@ import { ManejadorReglas } from "./manejadorReglas";
 export class Item {
     constructor(
         public cantidad: number,
-        private manejadorReglas: ManejadorReglas
+        private producto: Producto
     ) {}
 
-    calcular_total(regla: ReglaPrecio, producto: Producto): number {
-        const precioPorCantidad = producto.precio_unitario * this.cantidad;
-        
-        if (regla.es_aplicable(producto.sku)) {
+    calcular_total(): number {
+        const manejadorReglas = new ManejadorReglas(''); // Crear una instancia de ManejadorReglas
+        const precioPorCantidad = this.producto.precio_unitario * this.cantidad;
+
+        const regla: any = manejadorReglas.crear_regla(this.producto.sku);
+
+        if (regla && regla.es_aplicable(this.producto.sku)) {
             return regla.calcular_total(this.cantidad, precioPorCantidad);
         } else {
             return precioPorCantidad;
