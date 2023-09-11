@@ -1,8 +1,8 @@
 import {ReglaPrecio} from '../interfaces/reglaPrecio';
 
 export class ReglaEspecial implements ReglaPrecio {
-    es_aplicable(): boolean {
-        return true; // Siempre es aplicable para productos de descuento especial
+    es_aplicable(sku: string): boolean {
+        return sku.startsWith("SP"); // Aplicable si el SKU comienza con "SP"
     }
 
     calcular_total(cantidad: number, precio: number): number {
