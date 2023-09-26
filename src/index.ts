@@ -1,33 +1,33 @@
-import { Usuario } from './clases/usuario';
-import { Tienda } from './clases/tienda';
-import { Producto } from './clases/producto';
-import * as fs from 'fs';
+//Import dependencies
+import express from 'express';
 
-const usuario = new Usuario('cliente');
-const tienda = new Tienda();
+const app = express();
+//Cors
+var cors = require('cors')
+app.use(cors())
 
-while (true) {
-    console.log("\n•-•- Tienda de Comercio -•-•");
-    console.log("1. Agregar producto al carrito");
-    console.log("2. Calcular total de la compra");
-    console.log("3. Comprar");
-    console.log("4. Salir");
-    const opcion = prompt("Seleccione una opción: ");
+app.use(express.json());
+app.use(express.urlencoded({extended:true}));
 
-    if (opcion === "1") {
-        const sku:string = String(prompt("Ingrese el SKU del producto a agregar: "))
-        const cantidad = parseInt(String(prompt("Ingrese la cantidad a agregar: ")));
-        tienda.agregar_producto_a_carrito(usuario, new Producto(sku, '', '', 10, 100), cantidad);
-    } else if (opcion === "2") {
-        console.log(`El total de la compra es: ${tienda.calcular_total_de_compra()}`);
-    } else if (opcion === "3") {
-        tienda.guardar_ventas_en_archivo('ventas.json');
-        console.log("Venta realizada con éxito.");
-    } else if (opcion === "4") {
-        // Guardar datos antes de salir
-        tienda.guardar_ventas_en_archivo('ventas.json');
-        break;
-    } else {
-        console.log("Opción no válida. Intente de nuevo.");
-    }
-}
+//app.use(express.json());
+app.use((err:Error, req:express.Request, res:express.Response, next:express.NextFunction)=>{
+    res.status(500).json({message:err.message});
+});
+
+//Endpoint
+app.get('/', async (req,res) =>{
+    res.send('SERVIDOR APLICACIÓN DE COMERCIO');
+});
+
+//routes
+const port=3003;
+//Levantamiento
+ app.listen(port || 5000, () => {
+    console.log(`Escuchando API en http://localhost:${port}`);
+ });
+
+//Begining of development elements
+process.on('unhandledRejection', function(reason, promise) {
+    console.log(promise);
+});
+//End of development elements
