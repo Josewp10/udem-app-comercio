@@ -19,4 +19,4 @@ const pagarProductos=(idUsuario:string)=>{
     return carritos[idUsuario].pagarProductos();
 }
 
-export {modificarCarrito, pagarProductos}
+export {modificarCarrito, pagarProductos, listarCarrito}
