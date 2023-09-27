@@ -27,7 +27,10 @@ export class CarritoDeCompras {
     }
 
     public listarCarrito(){
-        return this.productos;
+        return {
+            productos:this.productos,
+            total:this.totalCompra
+        }
     }
 
     private agregarProducto(productoTienda:any, cantidad: number){
@@ -42,7 +45,7 @@ export class CarritoDeCompras {
         if (productoCarrito==undefined) {
             this.productos.push({
                 cantidad:cantidad,
-                descuento:precio,
+                descuento:(productoTienda.constructor.name=='ProductoNormal' ) ? 0:precio,
                 producto:productoTienda
             })
         }else{
