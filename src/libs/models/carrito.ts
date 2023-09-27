@@ -15,17 +15,23 @@ export class CarritoDeCompras {
         this.idUsuario=idUsuario;
     }
 
-    private obtenerProductos(){
-        
+    public pagarProductos(){
+        if (this.productos.length==0) throw 'No se puede realizar el pago, carrito vacío'
+                
+        const listaProductos = this.tienda.listarProductos();
+        this.productos.map((prod:any)=>{
+            let producto:any = listaProductos.find((obj:Producto) => obj.getSKU() ===  prod.producto.getSKU());
+            producto.modificar_cantidad(-prod.cantidad)
+        })
     }
-    private agregarCarrito(productoTienda:any, cantidad: number){
+
+    private agregarProducto(productoTienda:any, cantidad: number){
        
       let disponibles = productoTienda.getCantidad();
 
       if (disponibles>=cantidad) {
         this.totalCompra += productoTienda.calcular_precio(cantidad)
-        productoTienda.modificar_cantidad(-cantidad)
-
+        
         let productoCarrito:any = this.productos.find((prod:any) => prod.producto === productoTienda);
                 
         if (productoCarrito==undefined) {
@@ -43,13 +49,13 @@ export class CarritoDeCompras {
       }
     }
 
-    private eliminarCarrito(productoTienda:any, cantidad: number) {       
-        this.totalCompra = this.totalCompra - productoTienda.calcular_precio(cantidad)
-        productoTienda.modificar_cantidad(cantidad)
-
+    private eliminarProducto(productoTienda:any, cantidad: number) {  
         this.productos.map((prod:any)=>{
-            if(prod.producto==productoTienda) prod.cantidad-=cantidad
+            if(prod.cantidad>0 && prod.producto==productoTienda) prod.cantidad-=cantidad
+            else throw 'El carrito ya está vacío'
         })
+
+        this.totalCompra = this.totalCompra - productoTienda.calcular_precio(cantidad)
     }
 
     public modificarCarrito(SKU: string, cantidad: number,agregar:boolean) {
@@ -57,9 +63,9 @@ export class CarritoDeCompras {
         let producto:any = listaProductos.find((producto:Producto) => producto.getSKU() === SKU);
 
         if (agregar) {
-            this.agregarCarrito(producto,cantidad)
+            this.agregarProducto(producto,cantidad)
         } else {
-            this.eliminarCarrito(producto,cantidad)
+            this.eliminarProducto(producto,cantidad)
         }
 
       return {
