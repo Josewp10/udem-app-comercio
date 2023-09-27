@@ -8,7 +8,7 @@ export class CarritoDeCompras {
 
     private idUsuario:string  | undefined
     private totalCompra:number = 0 ;
-    private readonly productos: {cantidad:number,descuento:number,producto:Producto}[] = [];
+    private productos: {cantidad:number,descuento:number,producto:Producto}[] = [];
     private readonly tienda: Tienda = Tienda.getInstance();
 
     public constructor(idUsuario:string){

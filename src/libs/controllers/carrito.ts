@@ -11,6 +11,7 @@ const modificarCarrito=(idUsuario:string, SKU:string,cantidad:number,agregar:boo
 }
 
 const listarCarrito=(idUsuario:string)=>{
+    if (carritos[idUsuario]==undefined) throw 'No se puede realizar el pago, carrito vacío'
     return carritos[idUsuario].listarCarrito();
 }
 
