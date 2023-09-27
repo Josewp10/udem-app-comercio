@@ -26,12 +26,14 @@ export class Tienda {
         const data = JSON.parse(productosJson);
                 
         data.productos.map((obj:any)=>{
+            console.log(obj.cover);
+            
             if(obj.SKU.startsWith('EA')){                
-                this.productos.push(new ProductoNormal(obj.SKU,obj.Nombre,obj.Descripcion,obj.Cantidad,obj.PrecioUnitario))
+                this.productos.push(new ProductoNormal(obj.SKU,obj.Nombre,obj.Descripcion,obj.Cantidad,obj.PrecioUnitario, obj.cover))
             }else if(obj.SKU.startsWith('WE')){
-                this.productos.push(new ProductoPeso(obj.SKU,obj.Nombre,obj.Descripcion,obj.Cantidad,obj.PrecioUnitario))
+                this.productos.push(new ProductoPeso(obj.SKU,obj.Nombre,obj.Descripcion,obj.Cantidad,obj.PrecioUnitario, obj.cover))
             }else if(obj.SKU.startsWith('SP')){
-                this.productos.push(new ProductoEspecial(obj.SKU,obj.Nombre,obj.Descripcion,obj.Cantidad,obj.PrecioUnitario))
+                this.productos.push(new ProductoEspecial(obj.SKU,obj.Nombre,obj.Descripcion,obj.Cantidad,obj.PrecioUnitario, obj.cover))
             }
         })                
     }
