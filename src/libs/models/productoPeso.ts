@@ -8,7 +8,7 @@ export class ProductoPeso extends Producto implements ReglaPrecio{
         super(SKU,nombre, descripcion,cantidad_disponible,precio_unitario);
     }
 
-    calcular_precio(cantidad:number): number {
+    calcular_precio(cantidad:number): number {        
         return this.precio_unitario * (cantidad*1000);
     }
 }

@@ -12,4 +12,16 @@ export abstract class Producto {
         this.cantidad_disponible = cantidad_disponible
         this.precio_unitario = precio_unitario
     }
+
+    getSKU(){
+        return this.SKU
+    }
+
+    getCantidad(){
+        return this.cantidad_disponible
+    }
+
+    modificar_cantidad(cantidad:number){
+        this.cantidad_disponible += cantidad;
+    }
 }

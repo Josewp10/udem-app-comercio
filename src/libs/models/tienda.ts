@@ -1,17 +1,14 @@
 import * as fs from 'fs'
 import { Producto } from "./producto";
-import {CarritoDeCompras} from './carrito'
-
 import { ProductoNormal } from './productoNormal';
 import { ProductoEspecial } from './productoEspecial';
 import { ProductoPeso } from './productoPeso';
-import { log } from 'console';
 
 export class Tienda {
     private static instance: Tienda | null = null;
-    private readonly carrito: CarritoDeCompras = new CarritoDeCompras();
+    
+    protected productos: Producto[] = [];
 
-    private productos: Producto[] = [];
     public constructor() {
         this.cargarProductos()        
     }
@@ -23,6 +20,7 @@ export class Tienda {
         return Tienda.instance;
     }
 
+ 
     cargarProductos(){
         const productosJson = fs.readFileSync('src/libs/assets/products.json', 'utf-8');
         const data = JSON.parse(productosJson);
@@ -37,8 +35,8 @@ export class Tienda {
             }
         })                
     }
-
-    listarProductos(){                
-        return this.productos
+    
+    listarProductos(){                            
+        return this.productos       
     }
 }
