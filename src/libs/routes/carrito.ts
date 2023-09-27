@@ -3,11 +3,14 @@ const router = express.Router()
 
 import { modificarCarrito, pagarProductos, listarCarrito } from '../controllers/carrito';
 
-router.post('/tienda/carrito/listar', (req,res)=>{
+router.get('/tienda/carrito/listar', (req,res)=>{
     try {
-        const _carrito = listarCarrito()
+        let idUsuario = String(req.query.idUsuario);
+        const _carrito = listarCarrito(idUsuario)
         res.send({ok:true,data:_carrito})
     } catch (error) {
+        console.log(error);
+        
         res.send({ok:false,error:error})
     }
 })
