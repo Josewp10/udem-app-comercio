@@ -10,7 +10,7 @@ const modificarCarrito=(idUsuario:string, SKU:string,cantidad:number,agregar:boo
     return carritos[idUsuario].modificarCarrito(SKU,cantidad,agregar)
 }
 
-const listarCarrito(){
+const listarCarrito=()=>{
     return carritos[idUsuario].listarCarrito();
 }
 
