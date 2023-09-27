@@ -26,6 +26,10 @@ export class CarritoDeCompras {
         this.productos=[]
     }
 
+    public listarCarrito(){
+        return this.productos;
+    }
+
     private agregarProducto(productoTienda:any, cantidad: number){
        
       let disponibles = productoTienda.getCantidad();
@@ -50,6 +54,8 @@ export class CarritoDeCompras {
         throw `No se pueden agregar unidades, disponibles ${disponibles}`
       }
     }
+
+    
 
     private eliminarProducto(productoTienda:any, cantidad: number) {  
         this.productos.map((prod:any)=>{
