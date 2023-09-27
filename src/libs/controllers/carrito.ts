@@ -10,6 +10,10 @@ const modificarCarrito=(idUsuario:string, SKU:string,cantidad:number,agregar:boo
     return carritos[idUsuario].modificarCarrito(SKU,cantidad,agregar)
 }
 
+const listarCarrito(){
+    return carritos[idUsuario].listarCarrito();
+}
+
 const pagarProductos=(idUsuario:string)=>{
     if (carritos[idUsuario]==undefined) throw 'No se puede realizar el pago, carrito vacío'
     return carritos[idUsuario].pagarProductos();
