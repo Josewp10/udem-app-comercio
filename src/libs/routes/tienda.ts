@@ -1,12 +1,12 @@
 import express from 'express'
 const router = express.Router()
 
-import { Tienda } from '../models/tienda';
+import { listarProductos } from '../controllers/tienda';
 
 router.get('/tienda/productos', (req,res)=>{
-    const _tienda = Tienda.getInstance();
-    let productos = _tienda.listarProductos();
-    res.send(productos)
+    let SKU = String(req.query.SKU)
+    let productos = listarProductos(SKU)
+    res.send({ok:true,data:productos})
 })
 
 export default router;

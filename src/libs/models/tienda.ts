@@ -39,4 +39,8 @@ export class Tienda {
     listarProductos(){                            
         return this.productos       
     }
+
+    listarProducto(SKU:string){                            
+        return this.productos.find((producto:Producto) => producto.getSKU() === SKU);     
+    }
 }
