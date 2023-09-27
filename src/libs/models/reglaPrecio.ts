@@ -1,3 +1,3 @@
 export interface ReglaPrecio{
-    calcular_precio():number;
+    calcular_precio(cantidad:number):number;
 }

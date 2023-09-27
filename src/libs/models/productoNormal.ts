@@ -15,7 +15,7 @@ export class ProductoNormal extends Producto implements ReglaPrecio{
           return ProductoNormal.instancia;
     }
 
-    calcular_precio(): number {
+    calcular_precio(cantidad:number): number {
         return 0;
     }
 }
