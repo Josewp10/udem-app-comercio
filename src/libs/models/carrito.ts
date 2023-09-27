@@ -23,6 +23,7 @@ export class CarritoDeCompras {
             let producto:any = listaProductos.find((obj:Producto) => obj.getSKU() ===  prod.producto.getSKU());
             producto.modificar_cantidad(-prod.cantidad)
         })
+        this.productos=[]
     }
 
     private agregarProducto(productoTienda:any, cantidad: number){
