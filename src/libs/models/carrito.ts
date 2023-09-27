@@ -15,10 +15,11 @@ export class CarritoDeCompras {
         this.idUsuario=idUsuario;
     }
 
-    public modificarCarrito(SKU: string, cantidad: number) {
-
-      const listaProductos = this.tienda.listarProductos();
-      let productoTienda:any = listaProductos.find((producto:Producto) => producto.getSKU() === SKU);
+    private obtenerProductos(){
+        
+    }
+    private agregarCarrito(productoTienda:any, cantidad: number){
+       
       let disponibles = productoTienda.getCantidad();
 
       if (disponibles>=cantidad) {
@@ -40,6 +41,26 @@ export class CarritoDeCompras {
       }else{
         throw `No se pueden agregar unidades, disponibles ${disponibles}`
       }
+    }
+
+    private eliminarCarrito(productoTienda:any, cantidad: number) {       
+        this.totalCompra = this.totalCompra - productoTienda.calcular_precio(cantidad)
+        productoTienda.modificar_cantidad(cantidad)
+
+        this.productos.map((prod:any)=>{
+            if(prod.producto==productoTienda) prod.cantidad-=cantidad
+        })
+    }
+
+    public modificarCarrito(SKU: string, cantidad: number,agregar:boolean) {
+        const listaProductos = this.tienda.listarProductos();
+        let producto:any = listaProductos.find((producto:Producto) => producto.getSKU() === SKU);
+
+        if (agregar) {
+            this.agregarCarrito(producto,cantidad)
+        } else {
+            this.eliminarCarrito(producto,cantidad)
+        }
 
       return {
         totalCompra:this.totalCompra,
