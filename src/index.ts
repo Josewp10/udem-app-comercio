@@ -3,6 +3,7 @@ import express from 'express';
 
 //Rutas
 import tienda from './libs/routes/tienda'
+import carrito from './libs/routes/carrito'
 
 const app = express();
 //Cors
@@ -14,10 +15,11 @@ app.use(express.urlencoded({extended:true}));
 
 //app.use(express.json());
 app.use((err:Error, req:express.Request, res:express.Response, next:express.NextFunction)=>{
-    res.status(500).json({message:err.message});
+    res.status(400).json({message:err.message});
 });
 
 app.use(tienda)
+app.use(carrito)
 
 //Endpoint
 app.get('/', async (req,res) =>{
