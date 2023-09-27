@@ -5,18 +5,21 @@ import {CarritoDeCompras} from './carrito'
 import { ProductoNormal } from './productoNormal';
 import { ProductoEspecial } from './productoEspecial';
 import { ProductoPeso } from './productoPeso';
+import { log } from 'console';
 
 export class Tienda {
-    private static instance: Tienda | undefined = undefined;
+    private static instance: Tienda | null = null;
     private readonly carrito: CarritoDeCompras = new CarritoDeCompras();
 
     private productos: Producto[] = [];
-    public constructor() {}
+    public constructor() {
+        this.cargarProductos()        
+    }
 
     public static getInstance(): Tienda {
-        if (!Tienda.instance) {
+        if (Tienda.instance==null) {
             Tienda.instance = new Tienda();
-        }
+        }       
         return Tienda.instance;
     }
 
@@ -35,7 +38,7 @@ export class Tienda {
         })                
     }
 
-    listarProductos(){
+    listarProductos(){                
         return this.productos
     }
 }
