@@ -16,6 +16,12 @@ export class ProductoEspecial extends Producto implements ReglaPrecio{
     }
 
     calcular_precio(cantidad:number): number {
-        return 0;
+        let unidadesParaDescuento = Math.floor(cantidad / 3);
+        let descuentoPorcentaje = Math.min(unidadesParaDescuento * 20, 50); // Máximo 50% de descuento
+        
+        let precioFinal = this.precio_unitario * cantidad;
+        let descuento = (precioFinal * descuentoPorcentaje) / 100;
+        precioFinal -= descuento;
+        return precioFinal;
     }
 }
