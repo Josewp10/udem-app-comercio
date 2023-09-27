@@ -1,4 +1,4 @@
-export abstract class Productos {
+export abstract class Producto {
     protected SKU:string | undefined
     protected nombre:string | undefined
     protected descripcion: string | undefined

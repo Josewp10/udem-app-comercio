@@ -1,7 +1,7 @@
-import {Productos} from './productos'
+import {Producto} from './producto'
 import { ReglaPrecio } from './reglaPrecio'
 
-export class ProductoNormal extends Productos implements ReglaPrecio{
+export class ProductoNormal extends Producto implements ReglaPrecio{
     private static instancia: ProductoNormal | null = null;
 
     private constructor(SKU:string, nombre:string, descripcion:string, cantidad_disponible:number, precio_unitario:number){
