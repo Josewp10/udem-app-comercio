@@ -1,7 +1,16 @@
 import express from 'express'
 const router = express.Router()
 
-import { modificarCarrito, pagarProductos } from '../controllers/carrito';
+import { modificarCarrito, pagarProductos, listarCarrito } from '../controllers/carrito';
+
+router.post('/tienda/carrito/listar', (req,res)=>{
+    try {
+        const _carrito = listarCarrito()
+        res.send({ok:true,data:_carrito})
+    } catch (error) {
+        res.send({ok:false,error:error})
+    }
+})
 
 router.post('/tienda/carrito/agregar', (req,res)=>{
     try {
