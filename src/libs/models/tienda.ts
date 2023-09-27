@@ -23,25 +23,19 @@ export class Tienda {
     cargarProductos(){
         const productosJson = fs.readFileSync('src/libs/assets/products.json', 'utf-8');
         const data = JSON.parse(productosJson);
-        
+                
         data.productos.map((obj:any)=>{
-            if(obj.SKU.startsWith('EA')){
-                this.productos.push(ProductoNormal.getInstance(obj.SKU,obj.Nombre,obj.Descripcion,obj.Cantidad,obj.PrecioUnitario))
-            }else if(obj.SKU.startsWith('WA')){
-                this.productos.push(ProductoPeso.getInstance(obj.SKU,obj.Nombre,obj.Descripcion,obj.Cantidad,obj.PrecioUnitario))
+            if(obj.SKU.startsWith('EA')){                
+                this.productos.push(new ProductoNormal(obj.SKU,obj.Nombre,obj.Descripcion,obj.Cantidad,obj.PrecioUnitario))
+            }else if(obj.SKU.startsWith('WE')){
+                this.productos.push(new ProductoPeso(obj.SKU,obj.Nombre,obj.Descripcion,obj.Cantidad,obj.PrecioUnitario))
             }else if(obj.SKU.startsWith('SP')){
-                this.productos.push(ProductoEspecial.getInstance(obj.SKU,obj.Nombre,obj.Descripcion,obj.Cantidad,obj.PrecioUnitario))
+                this.productos.push(new ProductoEspecial(obj.SKU,obj.Nombre,obj.Descripcion,obj.Cantidad,obj.PrecioUnitario))
             }
-        })            
+        })                
     }
 
-    agregarProducto(producto: Producto) {
-        this.productos.push(producto);
-    }
-
-    listarProducto() {
-        this.productos.forEach(producto => {
-            //console.log(`Nombre: ${producto.nombre}, Precio: ${producto.precio}`);
-        });
+    listarProductos(){
+        return this.productos
     }
 }
