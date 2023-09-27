@@ -16,6 +16,6 @@ export class ProductoNormal extends Producto implements ReglaPrecio{
     }
 
     calcular_precio(cantidad:number): number {
-        return 0;
+        return this.precio_unitario * cantidad;
     }
 }
