@@ -1,6 +1,9 @@
 //Import dependencies
 import express from 'express';
 
+//Controladores
+ import { iniciarTienda } from './libs/controllers/tienda';
+
 const app = express();
 //Cors
 var cors = require('cors')
@@ -16,6 +19,8 @@ app.use((err:Error, req:express.Request, res:express.Response, next:express.Next
 
 //Endpoint
 app.get('/', async (req,res) =>{
+    console.log('GGGGGGGGGGGGGGGGG');
+    
     res.send('SERVIDOR APLICACIÓN DE COMERCIO');
 });
 
@@ -23,6 +28,7 @@ app.get('/', async (req,res) =>{
 const port=3003;
 //Levantamiento
  app.listen(port || 5000, () => {
+    iniciarTienda();
     console.log(`Escuchando API en http://localhost:${port}`);
  });
 

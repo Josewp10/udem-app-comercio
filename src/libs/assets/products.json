@@ -1,0 +1,124 @@
+{
+  "productos":[
+    {
+      "SKU": "EA001",
+      "Nombre": "Camiseta",
+      "Descripcion": "Camiseta de algodón",
+      "Cantidad": 50,
+      "PrecioUnitario": 60000,
+      "cover": "/assets/images/products/normales/Camiseta.PNG"
+    },
+    {
+      "SKU": "EA002",
+      "Nombre": "Pantalon",
+      "Descripcion": "Pantalón vaquero",
+      "Cantidad": 30,
+      "PrecioUnitario": 120000,
+      "cover": "/assets/images/products/normales/Pantalon.PNG"
+    },
+    {
+      "SKU": "EA003",
+      "Nombre": "Zapatos",
+      "Descripcion": "Zapatos de cuero",
+      "Cantidad": 20,
+      "PrecioUnitario": 180000,
+      "cover": "/assets/images/products/normales/Zapatos.PNG"
+    },
+    {
+      "SKU": "EA004",
+      "Nombre": "Bolso",
+      "Descripcion": "Bolso de mano",
+      "Cantidad": 15,
+      "PrecioUnitario": 90000,
+      "cover": "/assets/images/products/normales/Bolso.PNG"
+    },
+    {
+      "SKU": "EA005",
+      "Nombre": "Reloj",
+      "Descripcion": "Reloj de pulsera",
+      "Cantidad": 10,
+      "PrecioUnitario": 150000,
+      "cover": "/assets/images/products/normales/Reloj.PNG"
+    },
+    {
+      "SKU": "WE001",
+      "Nombre": "Café",
+      "Descripcion": "Café en granos",
+      "Cantidad": 10000,
+      "PrecioUnitario": 10,
+      "cover": "/assets/images/products/peso/Cafe.PNG"
+    },
+    {
+      "SKU": "WE002",
+      "Nombre": "Azúcar",
+      "Descripcion": "Azúcar blanca",
+      "Cantidad": 8000,
+      "PrecioUnitario": 3,
+      "cover": "/assets/images/products/peso/Azucar.PNG"
+    },
+    {
+      "SKU": "WE003",
+      "Nombre": "Arroz",
+      "Descripcion": "Arroz blanco",
+      "Cantidad": 12000,
+      "PrecioUnitario": 4,
+      "cover": "/assets/images/products/peso/Arroz.PNG"
+    },
+    {
+      "SKU": "WE004",
+      "Nombre": "Sal",
+      "Descripcion": "Sal de mesa",
+      "Cantidad": 6000,
+      "PrecioUnitario": 1.5,
+      "cover": "/assets/images/products/peso/Sal.PNG"
+    },
+    {
+      "SKU": "WE005",
+      "Nombre": "Harina de trigo",
+      "Descripcion": "Harina de trigo todo uso",
+      "Cantidad": 15000,
+      "PrecioUnitario": 2.65,
+      "cover": "/assets/images/products/peso/Harina.PNG"
+    },
+    {
+      "SKU": "SP001",
+      "Nombre": "Libro",
+      "Descripcion": "Libro de aventuras",
+      "Cantidad": 20,
+      "PrecioUnitario": 50000,
+      "cover": "/assets/images/products/descuento/Libro.PNG"
+    },
+    {
+      "SKU": "SP002",
+      "Nombre": "DVD",
+      "Descripcion": "DVD de película clásica",
+      "Cantidad": 30,
+      "PrecioUnitario": 250000,
+      "cover": "/assets/images/products/descuento/DVD.PNG"
+    },
+    {
+      "SKU": "SP003",
+      "Nombre": "Juego de mesa",
+      "Descripcion": "Juego de mesa para toda la familia",
+      "Cantidad": 15,
+      "PrecioUnitario": 75000,
+      "cover": "/assets/images/products/descuento/Juego.PNG"
+    },
+    {
+      "SKU": "SP004",
+      "Nombre": "Auriculares",
+      "Descripcion": "Auriculares inalámbricos",
+      "Cantidad": 25,
+      "PrecioUnitario": 150000,
+      "cover": "/assets/images/products/descuento/Auriculares.PNG"
+    },
+    {
+      "SKU": "SP005",
+      "Nombre": "Cámara",
+      "Descripcion": "Cámara digital compacta",
+      "Cantidad": 10,
+      "PrecioUnitario": 1150000,
+      "cover": "/assets/images/products/descuento/Camara.PNG"
+    }
+  ]
+}
