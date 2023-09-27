@@ -8,7 +8,7 @@ export class CarritoDeCompras {
 
     private idUsuario:string  | undefined
     private totalCompra:number = 0 ;
-    private readonly productos: {cantidad:number,producto:Producto}[] = [];
+    private readonly productos: {cantidad:number,descuento:number,producto:Producto}[] = [];
     private readonly tienda: Tienda = Tienda.getInstance();
 
     public constructor(idUsuario:string){
@@ -30,13 +30,14 @@ export class CarritoDeCompras {
       let disponibles = productoTienda.getCantidad();
 
       if (disponibles>=cantidad) {
-        this.totalCompra += productoTienda.calcular_precio(cantidad)
-        
+         let precio = productoTienda.calcular_precio(cantidad)
+         this.totalCompra +=precio;
         let productoCarrito:any = this.productos.find((prod:any) => prod.producto === productoTienda);
                 
         if (productoCarrito==undefined) {
             this.productos.push({
                 cantidad:cantidad,
+                descuento:precio,
                 producto:productoTienda
             })
         }else{
